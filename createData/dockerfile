@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3333
-ENTRYPOINT [ "node", "dist/index.js" ]
+ENTRYPOINT Debug=* npm run start
