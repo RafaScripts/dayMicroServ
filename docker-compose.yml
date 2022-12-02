@@ -1,0 +1,29 @@
+version: "1.0"
+
+services:
+  read:
+    build:
+        context: ./
+        dockerfile: ReadData/dockerfile
+    ports:
+        - "3333:3333"
+    volumes:
+        - ./:/ReadData/
+        - modules:/ReadData/node_modules
+        - /ReadData/node_modules
+    environment:
+      READ_DATA_HOST: http://localhost:3333
+  create:
+    build:
+        context: ./
+        dockerfile: CreateData/dockerfile
+    ports:
+        - "3332:3332"
+    volumes:
+        - ./:/CreateData/
+        - modules:/CreateData/node_modules
+        - /CreateData/node_modules
+    environment:
+      CREATE_DATA_HOST: http://localhost:4444
+  volumes:
+    modules:
